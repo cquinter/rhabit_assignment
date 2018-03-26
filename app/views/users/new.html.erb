@@ -1,0 +1,27 @@
+<%= form_for @user, method: 'post' do |f| %>
+  <div>
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name %>
+  </div>
+
+  <div>
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name %>
+  </div>
+
+  <div>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div>
+    <% all_employees = [] %>
+    <% @users.each do |user| %>
+      <% all_employees.push(user.full_name) %>
+    <% end %>
+    <%= f.label :manager %>
+    <%= f.select :manager, all_employees %>
+  </div>
+
+  <%= f.submit %>
+<% end %>
