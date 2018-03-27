@@ -8,79 +8,89 @@
 
 User.destroy_all
 
-User.create!(
+dade = User.create!(
   first_name: "Dade",
   last_name: "Murphy",
   title: "CEO",
   manager: nil
 )
 
-User.create!(
+kate = User.create!(
   first_name: "Kate",
   last_name: "Libby",
-  title: "CTO",
-  manager: "Dade Murphy"
+  title: "CTO"
 )
+kate.manager = dade
+kate.save!
 
-User.create!(
+edward = User.create!(
   first_name: "Edward",
   last_name: "Vedder",
-  title: "CFO",
-  manager: "Dade Murphy"
+  title: "CFO"
 )
+edward.manager = dade
+edward.save!
 
-User.create!(
+margo = User.create!(
   first_name: "Margo",
   last_name: "Wallace",
-  title: "VP of Public Relations",
-  manager: "Dade Murphy"
+  title: "VP of Public Relations"
 )
+margo.manager = dade
+margo.save!
 
-User.create!(
+eugene = User.create!(
   first_name: "Eugene",
   last_name: "Belfort",
-  title: "VP of Engineering",
-  manager: "Kate Libby"
+  title: "VP of Engineering"
 )
+eugene.manager = kate
+eugene.save!
 
-User.create!(
+richard = User.create!(
   first_name: "Richard",
   last_name: "Gill",
-  title: "Public Relations Manager",
-  manager: "Margo Wallace"
+  title: "Public Relations Manager"
 )
+richard.manager = margo
+richard.save!
 
-User.create!(
+emmanuel = User.create!(
   first_name: "Emmanuel",
   last_name: "Goldstein",
-  title: "Lead Software Engineer",
-  manager: "Eugene Belfort"
+  title: "Lead Software Engineer"
 )
+emmanuel.manager = eugene
+emmanuel.save!
 
-User.create!(
+paul = User.create!(
   first_name: "Paul",
   last_name: "Cook",
-  title: "Software Engineer",
-  manager: "Eugene Belfort"
+  title: "Software Engineer"
 )
+paul.manager = eugene
+paul.save!
 
-User.create!(
+joey = User.create!(
   first_name: "Joey",
   last_name: "Pardella",
-  title: "Junior Software Developer",
-  manager: "Paul Cook"
+  title: "Junior Software Developer"
 )
+joey.manager = paul
+joey.save!
 
-User.create!(
+agnes = User.create!(
   first_name: "Agnes",
   last_name: "Pardella",
-  title: "Project Manager",
-  manager: "Margo Wallace"
+  title: "Project Manager"
 )
+agnes.manager = margo
+agnes.save!
 
-User.create!(
+ramon = User.create!(
   first_name: "Ramon",
   last_name: "Sanches",
-  title: "Software Engineer",
-  manager: "Paul Cook"
+  title: "Software Engineer"
 )
+ramon.manager = paul
+ramon.save!

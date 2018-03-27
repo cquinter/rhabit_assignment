@@ -1,4 +1,4 @@
-<%= form_for @user, method: 'post' do |f| %>
+<%= form_for @user do |f| %>
   <div>
     <%= f.label :first_name %>
     <%= f.text_field :first_name %>
@@ -15,12 +15,8 @@
   </div>
 
   <div>
-    <% all_employees = [] %>
-    <% @users.each do |user| %>
-      <% all_employees.push(user.full_name) %>
-    <% end %>
     <%= f.label :manager %>
-    <%= f.select :manager, all_employees %>
+    <%= f.select :manager, @users, include_blank: " " %>
   </div>
 
   <%= f.submit %>

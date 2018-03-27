@@ -3,36 +3,16 @@
 <p><b>Title:</b> <%= @user.title %></p>
 
 <% unless @user.manager == nil %>
-  <% @users.each do |user| %>
-    <% if user.full_name == @user.manager %>
-      <% @manager_id = user.id %>
-    <% end %>
-  <% end %>
-  <p><b>Manager:</b> <%= link_to "#{@user.manager}", user_url(@manager_id) %></p>
+  <p><b>Manager:</b> <%= link_to @user.manager.full_name, user_url(@user.manager.id) %></p>
 <% end %>
 
-<% direct_reports = [] %>
-<% @users.each do |user| %>
-  <% if user.manager == @user.full_name %>
-    <% direct_reports.push(user.full_name) %>
-  <% end %>
-<% end %>
-
-<% if direct_reports.length == 0 %>
+<% if @user.employees.blank? %>
   <p><b>Direct Reports:</b> None </p>
 <% else %>
   <b>Direct Reports:</b>
   <ul>
-    <% direct_reports_ids = [] %>
-    <% @users.each do |user| %>
-      <% if direct_reports.include?(user.full_name) %>
-        <% direct_reports_ids.push(user.id) %>
-      <% end %>
-    <% end %>
-    <% x = 0 %>
-    <% direct_reports.each do |employee| %>
-      <li><%= link_to employee, user_url(direct_reports_ids[x]) %></li>
-      <% x += 1 %>
+    <% @user.employees.each do |employee| %>
+      <li><%= link_to employee.full_name, user_url(employee.id) %></li>
     <% end %>
   </ul>
 <% end %>
