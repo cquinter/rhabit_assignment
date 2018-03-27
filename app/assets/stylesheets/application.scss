@@ -14,12 +14,13 @@
  *= require_self
  */
 
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
 
-.all_users {
-  padding: 10px;
+.btn {
+  margin-top: 5px;
 }
 
-.new_user_link {
-  margin-top: 30px;
-  padding: 10px;
+li {
+  margin-top: 10px;
 }

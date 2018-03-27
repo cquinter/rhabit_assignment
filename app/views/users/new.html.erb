@@ -1,23 +1,35 @@
-<%= form_for @user do |f| %>
-  <div>
-    <%= f.label :first_name %>
-    <%= f.text_field :first_name %>
-  </div>
+<div class="container">
+  <% if @user.id != nil %>
+    <h1>Edit User</h1>
+  <% else %>
+    <h1>New User</h1>
+  <% end %>
 
-  <div>
-    <%= f.label :last_name %>
-    <%= f.text_field :last_name %>
-  </div>
+  <%= form_for @user do |f| %>
+    <div class="field">
+      <%= f.label :first_name %>
+      <%= f.text_field :first_name %>
+    </div>
 
-  <div>
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-  </div>
+    <div class="field">
+      <%= f.label :last_name %>
+      <%= f.text_field :last_name %>
+    </div>
 
-  <div>
-    <%= f.label :manager %>
-    <%= f.select :manager, @users, include_blank: " " %>
-  </div>
+    <div class="field">
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+    </div>
 
-  <%= f.submit %>
-<% end %>
+    <div class="field">
+      <%= f.label :manager %>
+      <%= f.select :manager_id, @users, include_blank: " " %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Submit", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+
+  <%= link_to "Cancel", root_url, class: "btn btn-danger" %>
+</div>

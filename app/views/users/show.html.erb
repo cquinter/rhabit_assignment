@@ -1,25 +1,28 @@
-<p><b>Name:</b> <%= @user.full_name %></p>
+<div class="container">
 
-<p><b>Title:</b> <%= @user.title %></p>
+  <h1><%= @user.full_name %></h1>
 
-<% unless @user.manager == nil %>
-  <p><b>Manager:</b> <%= link_to @user.manager.full_name, user_url(@user.manager.id) %></p>
-<% end %>
+  <p><b>Title:</b> <%= @user.title %></p>
 
-<% if @user.employees.blank? %>
-  <p><b>Direct Reports:</b> None </p>
-<% else %>
-  <b>Direct Reports:</b>
-  <ul>
-    <% @user.employees.each do |employee| %>
-      <li><%= link_to employee.full_name, user_url(employee.id) %></li>
-    <% end %>
-  </ul>
-<% end %>
+  <% unless @user.manager == nil %>
+    <p><b>Manager:</b> <%= link_to @user.manager.full_name, user_url(@user.manager.id) %></p>
+  <% end %>
 
-<br>
-<%= link_to "Edit this user", edit_user_url(@user.id) %>
-<br>
-<%= link_to "Delete this user", user_url(@user.id), method: :delete, data: {confirm: "Are you sure?"} %>
-<br>
-<%= link_to "Back to all users", root_url %>
+  <% if @user.employees.blank? %>
+    <p><b>Direct Reports:</b> None </p>
+  <% else %>
+    <b>Direct Reports:</b>
+    <ul>
+      <% @user.employees.each do |employee| %>
+        <li><%= link_to employee.full_name, user_url(employee.id) %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <%= link_to "Edit this user", edit_user_url(@user.id), class: "btn btn-success" %>
+  <br>
+  <%= link_to "Delete this user", user_url(@user.id), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger" %>
+  <br>
+  <%= link_to "Back to all users", root_url, class: "btn btn-primary" %>
+
+</div>
