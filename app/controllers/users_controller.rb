@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
   def index
+    @boss = User.find_by(manager_id: nil)
     @users = User.all
     respond_to do |format|
       format.html

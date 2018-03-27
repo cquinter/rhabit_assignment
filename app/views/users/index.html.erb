@@ -2,31 +2,28 @@
 
   <h1>All Users</h1>
 
-  <% @users.each do |user| %>
-    <% if user.manager_id == nil %>
-    <p><%= link_to "#{user.full_name}", user_url(user.id) %><%= ", #{user.title}" %></p>
-      <ul>
-        <% user.employees.each do |employee| %>
-          <li><%= link_to "#{employee.full_name}", user_url(employee.id) %><%= ", #{employee.title}" %></li>
-            <ul>
-              <% employee.employees.each do |employee| %>
-                <li><%= link_to "#{employee.full_name}", user_url(employee.id) %><%= ", #{employee.title}" %></li>
-                  <ul>
-                    <% employee.employees.each do |employee| %>
-                      <li><%= link_to "#{employee.full_name}", user_url(employee.id) %><%= ", #{employee.title}" %></li>
-                        <ul>
-                          <% employee.employees.each do |employee| %>
-                            <li><%= link_to "#{employee.full_name}", user_url(employee.id) %><%= ", #{employee.title}" %></li>
-                          <% end %>
-                        </ul>
-                    <% end %>
-                  </ul>
-              <% end %>
-            </ul>
-        <% end %>
-      </ul>
+  <p><%= link_to "#{@boss.full_name}", user_url(@boss.id) %><%= ", #{@boss.title}" %></p>
+
+  <ul>
+    <% @boss.employees.each do |employee| %>
+      <li><%= link_to "#{employee.full_name}", user_url(employee.id) %><%= ", #{employee.title}" %></li>
+        <ul>
+          <% employee.employees.each do |employee| %>
+            <li><%= link_to "#{employee.full_name}", user_url(employee.id) %><%= ", #{employee.title}" %></li>
+              <ul>
+                <% employee.employees.each do |employee| %>
+                  <li><%= link_to "#{employee.full_name}", user_url(employee.id) %><%= ", #{employee.title}" %></li>
+                    <ul>
+                      <% employee.employees.each do |employee| %>
+                        <li><%= link_to "#{employee.full_name}", user_url(employee.id) %><%= ", #{employee.title}" %></li>
+                      <% end %>
+                    </ul>
+                <% end %>
+              </ul>
+          <% end %>
+        </ul>
     <% end %>
-  <% end %>
+  </ul>
 
   <%= link_to "Create a new user", new_user_url, class: "btn btn-primary" %>
 
