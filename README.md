@@ -12,5 +12,4 @@
 * example url to return a **subsection** of an organization's relations in **html:**  http://localhost:3000/users/73
 * example url to return a **subsection** of an organization's relations in **json:**  http://localhost:3000/users/73.json
 
-*ruby -v 2.4.0, *
-*rails -v 5.1.4*
+*ruby -v 2.4.0, rails -v 5.1.4*
