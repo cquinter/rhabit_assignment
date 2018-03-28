@@ -3,27 +3,12 @@
   <h1>All Users</h1>
 
   <p><%= link_to "#{@boss.full_name}", user_url(@boss.id) %><%= ", #{@boss.title}" %></p>
-
-  <ul>
-    <% @boss.employees.each do |employee| %>
+  <% @boss.employees.each do |employee| %>
+    <ul>
       <li><%= link_to "#{employee.full_name}", user_url(employee.id) %><%= ", #{employee.title}" %></li>
-        <ul>
-          <% employee.employees.each do |employee| %>
-            <li><%= link_to "#{employee.full_name}", user_url(employee.id) %><%= ", #{employee.title}" %></li>
-              <ul>
-                <% employee.employees.each do |employee| %>
-                  <li><%= link_to "#{employee.full_name}", user_url(employee.id) %><%= ", #{employee.title}" %></li>
-                    <ul>
-                      <% employee.employees.each do |employee| %>
-                        <li><%= link_to "#{employee.full_name}", user_url(employee.id) %><%= ", #{employee.title}" %></li>
-                      <% end %>
-                    </ul>
-                <% end %>
-              </ul>
-          <% end %>
-        </ul>
-    <% end %>
-  </ul>
+      <%= display_employees_for(employee) %>
+    </ul>
+  <% end %>
 
   <%= link_to "Create a new user", new_user_url, class: "btn btn-primary" %>
 
