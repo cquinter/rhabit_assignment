@@ -1,24 +1,15 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+1. clone repository
+1. bundle
+1. migrate
+1. seed data
+1. run on local server
 
-Things you may want to cover:
+* example url to return an **entire** organization’s relationships in **html:**  http://localhost:3000/users
+* example url to return an **entire** organization’s relationships in **json:**  http://localhost:3000/users.json
 
-* Ruby version
+* example url to return a **subsection** of an organization's relations in **html:**  http://localhost:3000/users/73
+* example url to return a **subsection** of an organization's relations in **json:**  http://localhost:3000/users/73.json
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+*ruby -v 2.4.0, rails -v 5.1.4*
